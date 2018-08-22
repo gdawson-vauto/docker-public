@@ -15,13 +15,17 @@ RUN Invoke-WebRequest -OutFile dotnet.zip https://dotnetcli.blob.core.windows.ne
     }; `
     `
     Expand-Archive dotnet.zip -DestinationPath 'C:\Program Files\dotnet'; `
-    Remove-Item -Force dotnet.zip
+    Remove-Item -Force dotnet.zip; `
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; `
+    Invoke-WebRequest -OutFile MinGit.zip 'https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.2/MinGit-2.12.2.2-64-bit.zip'; `
+    Expand-Archive MinGit.zip -DestinationPath 'C:\Program Files\MinGit'; `
+    Remove-Item -Force MinGit.zip;
 
 # In order to set system PATH, ContainerAdministrator must be used
 USER ContainerAdministrator
 RUN $Reg='Registry::HKLM\System\CurrentControlSet\Control\Session Manager\Environment'; `
     $OldPath=(Get-ItemProperty -Path $Reg -Name PATH).Path; `
-    $NewPath=$OldPath + ';' + 'C:\Program Files\dotnet'; `
+    $NewPath=$OldPath + ';' + 'C:\Program Files\dotnet;C:\Program Files\MinGit\cmd'; `
     Set-ItemProperty -Path $Reg -Name PATH -Value $NewPath
 USER ContainerUser
 
