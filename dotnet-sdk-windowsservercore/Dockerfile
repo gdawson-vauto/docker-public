@@ -17,7 +17,7 @@ RUN Invoke-WebRequest -OutFile dotnet.zip https://dotnetcli.blob.core.windows.ne
     Expand-Archive dotnet.zip -DestinationPath 'C:\Program Files\dotnet'; `
     Remove-Item -Force dotnet.zip; `
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; `
-    Invoke-WebRequest -OutFile MinGit.zip 'https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.2/MinGit-2.12.2.2-64-bit.zip'; `
+    Invoke-WebRequest -OutFile MinGit.zip 'https://github.com/git-for-windows/git/releases/download/v2.17.1.windows.2/MinGit-2.17.1.2-64-bit.zip'; `
     Expand-Archive MinGit.zip -DestinationPath 'C:\Program Files\MinGit'; `
     Remove-Item -Force MinGit.zip;
 
