@@ -29,5 +29,6 @@ Tag                     | Short Description                             | Curren
 ubuntu-minimal          | Agent only                                    | [![](https://images.microbadger.com/badges/image/gdawson/devopsagent:ubuntu-minimal-0.1.0.svg)](https://cloud.docker.com/repository/docker/gdawson/devopsagent)
 ubuntu-minimal-dotnet   | Agent + netcore SDK                           | TBD
 ubuntu-minimal-python   | Agent + python                                | TBD
+ubuntu-standard         | Standard build tools                          | TBD
 ubuntu-standard-dotnet  | Standard build tools + dotnet SDK             | TBD
 ubuntu-standard-python  | Standard build tools + python                 | TBD
