@@ -1,17 +1,21 @@
-# docker-public
+# devops-docker-agent
 
-## Docker Images
+## Ubuntu
 
-### gdawson/dotnet
+Based on [Running in Docker](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops).
 
-#### Windows Server Core + .NET Core 2.1.400
+### Building the Image
 
-#### Tags
+From within a directory, such as `/ubuntu/minimal`:
 
-**2.1-sdk-windowsservercore-1709**, 2.1.400-sdk-windowsservercore-1709
+```shell
+docker build -t dockeragent:latest .
+```
 
-#### Windows Server Nano + PowerShell Core
+### Run the Container
 
-#### Tags
+This will install the latest version of the agent, configure it, and run the agent targeting the Default pool of a specified Azure DevOps or Azure DevOps Server instance of your choice:
 
-**2.1-sdk-nanoserver-1709**, 2.1.400-sdk-nanoserver-1709
+```shell
+docker run -e AZP_URL=<Azure DevOps instance> -e AZP_TOKEN=<PAT token> -e AZP_AGENT_NAME=mydockeragent dockeragent:latest
+```
